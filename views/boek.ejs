@@ -1,0 +1,91 @@
+<%- include("partials/header");-%>
+
+<!-- helper objects-->
+<div id="boekJSON" data-test-value="<%= JSON.stringify(boek) %>"></div>
+<div id="index" data-test-value="<%= index %>"></div>
+<audio id="audio">
+  <source src="" />
+</audio>
+
+<div class="boekAlles">
+  <button class="close roundButton"><i class="fa-solid fa-xmark"></i></button>
+  <button class="prev roundButton"><i class="fa-solid fa-angle-left"></i></button>
+  <button class="next roundButton"><i class="fa-solid fa-angle-right"></i></button>
+
+  <div class="boekContainer" id="desktop-carousel">
+    <div id="flipbook">
+      <div class="my-page">
+        <img src="/Images/<%=boek.nummer%>/<%=boek.coverImage%>.jpg" />
+      </div>
+      <% boek.hoofdstukken.forEach(function(hoofdstuk){ %> <% for(let i = 1; i
+      <= hoofdstuk.aantalPag; i++) { %>
+      <div class="my-page">
+        <img src="/Images/<%=boek.nummer%>/<%=hoofdstuk.image%>_<%=i %>.jpg" />
+      </div>
+      <% } %> <% }) %>
+    </div>
+  </div>
+
+  <!-- Second Carousel for Mobile -->
+  <div class="boekContainer" id="mobile-carousel">
+    <div id="mobileFlipbook">
+      <div class="my-page">
+        <img src="/Images/<%=boek.nummer%>/<%=boek.coverImage%>.jpg" />
+      </div>
+      <% boek.hoofdstukken.forEach(function(hoofdstuk){ %> <% for(let i = 1; i
+      <= hoofdstuk.aantalPag; i++) { %>
+      <div class="my-page">
+        <div class="mobileContent">
+          <%-hoofdstuk.Paginas[i-1] %>
+        </div>
+      </div>
+      <% } %> <% }) %>
+    </div>
+  </div>
+
+  <div id="audio-player-container">
+    <button id="play" class="roundButton"></button>
+    <span id="current-time" class="time">0:00</span>
+    <input type="range" id="seek-slider" max="100" value="0" />
+    <span id="duration" class="time">0:00</span>
+    <div id="audio-settings">
+      <button id="text" class="roundButton"><i class="fa-regular fa-file-lines "></i></button>
+      <button id="chapters" class="roundButton"><i class="fa-solid fa-list"></i></button>
+      <button id="settings" class="roundButton"><i class="fa-solid fa-gear"></i></button>
+    </div>
+  </div>
+</div>
+
+<!-- chapter Modal-->
+<div class="modal" id="chapterModal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>Inhoud</h2>
+      <button class="sqButton" id="closeModal" >&times;</button>
+    </div>
+    <div class="modal-message">
+      <% let currentPage = 1;
+      boek.hoofdstukken.forEach(function(hoofdstuk){ %>
+      <button class="rectButton inhoudItem" value="<%= currentPage %>"">
+        <%=hoofdstuk.naam %>
+      </button>
+      <% currentPage += hoofdstuk.aantalPag; %>
+      <% })%>
+    </div>
+  </div>
+</div>
+
+<!-- chapter Modal-->
+<div class="modal" id="settingsModal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>Inhoud</h2>
+      <button class="sqButton" id="closeSettingsModal" >&times;</button>
+    </div>
+    <div class="modal-message">
+     Hier komen de settings
+    </div>
+  </div>
+</div>
+<script type="text/javascript" src="/scripts/boek.js"></script>
+<%- include("partials/footer");-%>

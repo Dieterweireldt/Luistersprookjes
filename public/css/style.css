@@ -183,7 +183,7 @@ a {
   background-color: var(--neutral);
   padding: 20px;
   width: 80vw;
-  text-align: center;
+  text-align: left;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border-radius: 20px;
   max-width: 90%;
@@ -538,8 +538,8 @@ button.next {
   }
 
   #playDiv button{
-    width: 100px;
-    height: 100px;
+    width: 70px;
+    height: 70px;
   }
 
   #rangeDiv { 
@@ -722,6 +722,6 @@ input[type="range"]:active::-ms-thumb {
   position: relative;
   top: 0;
   text-align: center;
-  font-size: 3rem;
+  font-size: 2.5rem;
 }
 }

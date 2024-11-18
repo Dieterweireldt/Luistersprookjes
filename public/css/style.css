@@ -690,16 +690,15 @@ input[type="range"]:active::-ms-thumb {
     }
   
     #hoofdstukContainer {
-      width: 100%; /* Control the width of the hoofdstuk container */
-      min-width: 300px;
-      text-align: left; /* Ensure the items inside are left-aligned */
+      width: 100%; 
+      min-width: 400px;
+      text-align: left; 
       display: grid;
-      grid-template-columns: 1fr; /* Ensure the chapters stack in one column */
+      grid-template-columns: 1fr; 
     }
 
     .rectButton {
       font-size: 1rem; /* Font size can be adjusted to fit the design */
-      width: 90%;
     }
   #mobile-carousel {
     display: flex; /* Show mobile carousel on mobile */

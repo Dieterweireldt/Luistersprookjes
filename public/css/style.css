@@ -340,7 +340,6 @@ a {
 }
 
 
-}
 
 #audio-settings button {
   margin: 0px 10px;
@@ -713,5 +712,16 @@ input[type="range"]:active::-ms-thumb {
 #playDiv button{
   width: 60px;
   height: 60px;
+}
+
+
+}
+
+@media (max-width: 400px) {
+.hero-text h1 {
+  position: relative;
+  top: 0;
+  text-align: center;
+  font-size: 3rem;
 }
 }

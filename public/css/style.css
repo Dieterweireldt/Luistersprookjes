@@ -677,9 +677,7 @@ input[type="range"]:active::-ms-thumb {
     font-size: 24px;
   }
 
-  #desktop-carousel {
-    display: none; /* Hide desktop carousel on mobile */
-  }
+
 
   .hero-text h1 {
       position: relative;
@@ -700,9 +698,7 @@ input[type="range"]:active::-ms-thumb {
     .rectButton {
       font-size: 1rem; /* Font size can be adjusted to fit the design */
     }
-  #mobile-carousel {
-    display: flex; /* Show mobile carousel on mobile */
-  }
+
 
   .modal-content {
     width: 100%;
@@ -719,8 +715,8 @@ input[type="range"]:active::-ms-thumb {
 @media (max-width: 400px) {
 .hero-text h1 {
   position: relative;
-  top: 0;
+  top: -10px;
   text-align: center;
-  font-size: 2.5rem;
+  font-size: 3rem;
 }
 }

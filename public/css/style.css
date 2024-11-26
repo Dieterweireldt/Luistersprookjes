@@ -430,6 +430,7 @@ button.next {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 20;
+  
 }
 
 .modal-content {
@@ -446,6 +447,14 @@ button.next {
   animation-duration: 0.5s;
   animation-timing-function: cubic-bezier(0.42, 0, 0.21, 0.99);
   z-index: 11;
+  overflow: auto;
+
+}
+
+.modal-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .modal-header {
@@ -460,7 +469,7 @@ button.next {
   color: var(--glow);
   font-size: 26px;
   font-style: normal;
-  font-weight: 500;
+  font-weight: bolder;
 }
 #closeModal {
   width: 30px;
@@ -468,6 +477,7 @@ button.next {
   margin-right: 0px;
   position: relative;
 }
+
 
 #closeSettingsModal {
   width: 30px;
@@ -510,6 +520,18 @@ button.next {
     opacity: 0;
   }
 }
+
+
+label{
+  color: var(--glow);
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+#settingsSave {
+  margin-top: 100px;
+}
+
 
 #audio-player-container {
   display: flex;
@@ -732,9 +754,9 @@ input[type="range"]:active::-ms-thumb {
     }
 
   .roundButton {
-    width: 40px;
-    height: 40px;
-    font-size: 24px;
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
   }
 
 
@@ -743,7 +765,7 @@ input[type="range"]:active::-ms-thumb {
       position: relative;
       top: 0;
       text-align: center;
-      font-size: 4rem;
+      font-size: 2rem;
       transform: translate(10%, -100%);
     }
   
@@ -777,8 +799,32 @@ input[type="range"]:active::-ms-thumb {
 @media (max-width: 400px) {
 .hero-text h1 {
   position: relative;
-  top: -10px;
+  top: -20px;
   text-align: center;
-  font-size: 3rem;
+  font-size: 2.5em;
+}
+
+.search {
+  top: 34vh;
+  right: 10vw;
+}
+
+#searchInput {
+  width: 100%;
+}
+
+#hoofdstukContainer {
+  width: 100%; 
+}
+
+.inhoudItem {
+  width: 100%;
+}
+
+button.prev,
+button.next {
+  top: 78%;
+  /*transform: translateY(-50%);*/
+  z-index: 10;
 }
 }

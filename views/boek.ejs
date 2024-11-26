@@ -78,11 +78,55 @@
 <div class="modal" id="settingsModal">
   <div class="modal-content">
     <div class="modal-header">
-      <h2>Inhoud</h2>
+      <h2>Instellingen (werkt nog niet)</h2>
       <button class="sqButton" id="closeSettingsModal" >&times;</button>
     </div>
     <div class="modal-message">
-     Hier komen de settings
+      <form id="settingsForm" >
+             
+        <!-- Checkbox for autoplay audio -->
+        <label>
+          <input type="checkbox" id="autoplayAudio" name="autoplayAudio">
+          Automatisch audio afspelen
+        </label>
+        <br><br>
+      
+        <!-- Checkbox for automatically starting book -->
+        <label>
+          <input type="checkbox" id="autoplayBook" name="autoplayBook">
+          Automatisch boek starten
+        </label>
+        <br><br>
+      
+        <!-- Checkbox for automatically switching to next page -->
+        <label>
+          <input type="checkbox" id="autonextPage" name="autonextPage">
+          Automatisch naar volgende pagina
+        </label>
+        <br><br>
+      
+        <!-- Dropdown for text size -->
+        <label for="textSize">Tekstgrootte:</label>
+        <select id="textSize" name="textSize">
+          <option value="12px">12px</option>
+          <option value="14px">14px</option>
+          <option value="16px" selected>16px (Standaard)</option>
+          <option value="18px">18px</option>
+          <option value="20px">20px</option>
+        </select>
+        <br><br>
+      
+        <!-- Color picker for text color -->
+        <label for="textColor">Tekstkleur:</label>
+        <input type="color" id="textColor" name="textColor" value="#000000">
+        <br><br>
+      
+        <!-- Submit button -->
+        <button type="submit" class="rectButton" id="settingsSave">
+          Opslaan
+        </button>
+      </form>
+      
     </div>
   </div>
 </div>

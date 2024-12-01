@@ -261,8 +261,6 @@ a {
   transition: 0.3s ease; /* Smooth transition for hover effects */
   display: inline-flex; /* Allows alignment of icon and text */
   align-items: center; /* Center aligns content vertically */
-  /*justify-content: center;  Center aligns content horizontally */
-  flex-shrink: 0; /* Prevents shrinking in flex containers */
   width: 75%;
   margin-bottom: 5px;
 }
@@ -366,10 +364,10 @@ a {
   width: 100%;
 }
 
+
+
 #hoofdstukContainer {
   width: 50%; /* Control the width of the hoofdstuk container */
-  max-width: 600px; /* Limit the maximum width */
-  min-width: 300px;
   text-align: left; /* Ensure the items inside are left-aligned */
   display: grid;
   grid-template-columns: 1fr; /* Ensure the chapters stack in one column */
@@ -770,11 +768,15 @@ input[type="range"]:active::-ms-thumb {
     }
   
     #hoofdstukContainer {
-      width: 100%; 
-      min-width: 400px;
+      width: 80%; 
       text-align: left; 
       display: grid;
       grid-template-columns: 1fr; 
+    }
+
+    #hoofdstukContainer div {
+      display: flex;
+      flex-direction: row;
     }
 
     .rectButton {
@@ -815,6 +817,10 @@ input[type="range"]:active::-ms-thumb {
 
 #hoofdstukContainer {
   width: 100%; 
+}
+
+#hoofdstukContainer .rectButton {
+  flex-grow: 1;
 }
 
 .inhoudItem {

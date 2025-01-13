@@ -829,7 +829,7 @@ input[type="range"]:active::-ms-thumb {
 
 button.prev,
 button.next {
-  top: 88%;
+  top: 90%;
   /*transform: translateY(-50%);*/
   z-index: 10;
 }

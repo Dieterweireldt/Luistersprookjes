@@ -1,5 +1,14 @@
 var currentIndex;
 
+window.addEventListener('load', () => {
+  // Check if the page is already scrolled
+  if (window.scrollY === 0) {
+    // Scroll the page by 1 pixel
+    window.scrollTo(0, 1);
+  }
+});
+
+
 document.addEventListener("DOMContentLoaded", function () {
   const flipbook = document.getElementById("flipbook");
   const flipbookMobile = document.getElementById("mobileFlipbook");

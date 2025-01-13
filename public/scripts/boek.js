@@ -1,11 +1,14 @@
 var currentIndex;
 
-window.addEventListener('load', () => {
-  // Check if the page is already scrolled
-  if (window.scrollY === 0) {
-    // Scroll the page by 1 pixel
-    window.scrollTo(0, 1);
+let lastScrollTop = 0;
+
+window.addEventListener('scroll', function() {
+  let currentScroll = window.scrollY || document.documentElement.scrollTop;
+  if (currentScroll > lastScrollTop) {
+    // Downscroll code
+    window.scrollTo(0, 1); // Hide browser bar
   }
+  lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // For Mobile or negative scrolling
 });
 
 

@@ -798,7 +798,7 @@ input[type="range"]:active::-ms-thumb {
 
 }
 
-@media (max-width: 400px) {
+@media (max-width: 440px) {
 .hero-text h1 {
   position: relative;
   top: -20px;

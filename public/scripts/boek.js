@@ -2,15 +2,15 @@ var currentIndex;
 
 let lastScrollTop = 0;
 
-window.addEventListener('scroll', function() {
-  let currentScroll = window.scrollY || document.documentElement.scrollTop;
-  if (currentScroll > lastScrollTop) {
-    // Downscroll code
-    window.scrollTo(0, 1); // Hide browser bar
-  }
-  lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // For Mobile or negative scrolling
-});
+let autoplayBook = false;
+let autonextPage = false;
+let textSize = "16px";
+let textColor = "#000000";
 
+// Load settings from localStorage on page load
+window.addEventListener("load", function () {
+
+});
 
 document.addEventListener("DOMContentLoaded", function () {
   const flipbook = document.getElementById("flipbook");
@@ -49,10 +49,22 @@ document.addEventListener("DOMContentLoaded", function () {
   calcPages();
 
   function showPage(index) {
+    if(index === 0){
+      console.log(autoplayBook);
+      if(autoplayBook){
+        console.log("cover overslaan");
+        setTimeout(() => {
+          currentIndex++;
+          showPage(currentIndex);
+        }, 500);
+        
+      }
+    }
     const offset = -index * 100;
     flipbook.style.transform = `translateX(${offset}%)`;
     flipbookMobile.style.transform = `translateX(${offset}%)`;
     currentIndex = index;
+    
     playAudio();
     changeButton();
   }
@@ -91,12 +103,30 @@ document.addEventListener("DOMContentLoaded", function () {
     audio.pause();
     playState = "pause";
     if (currentIndex > 0) {
-      playState = "play";
-      audio.src = audioFiles[currentIndex];
-      console.log(audioFiles[currentIndex]);
-      audio.play();
-      requestAnimationFrame(whilePlaying);
+      
+        playState = "play";
+        audio.src = audioFiles[currentIndex];
+        console.log(audioFiles[currentIndex]);
+        audio.play();
+        requestAnimationFrame(whilePlaying);
+      
     }
+  }
+
+  const settings = JSON.parse(localStorage.getItem("userSettings"));
+  console.log(settings);
+  if (settings) {
+    autoplayBook = settings.autoplayBook;
+    autonextPage = settings.autonextPage;
+    textSize = settings.textSize;
+    textColor = settings.textColor;
+
+    document.getElementById("autoplayBook").checked = autoplayBook;
+    document.getElementById("autonextPage").checked = autonextPage;
+    document.getElementById("textSize").value = textSize;
+    document.getElementById("textColor").value = textColor;
+
+    applyTextStyles();
   }
 
   showPage(requestedIndex);
@@ -104,7 +134,7 @@ document.addEventListener("DOMContentLoaded", function () {
   playButton.addEventListener("click", () => {
     if (currentIndex == 0) {
       showPage(1);
-    }else {
+    } else {
       if (playState === "pause") {
         audio.play();
         requestAnimationFrame(whilePlaying);
@@ -117,7 +147,37 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     changeButton();
   });
+
+  audio.addEventListener("ended", function () {
+    console.log("Audio finished playing!");
+    // Proceed to the next page or perform any other action
+    if (autonextPage) {
+      if (currentIndex < pages) {
+        currentIndex++;
+        showPage(currentIndex);
+      }
+    }
+  });
+
+  applyTextStyles();
 });
+
+function applyTextStyles() {
+  // Select all paragraph elements inside .mobileContent
+  const paragraphs = document.querySelectorAll(".mobileContent p");
+  const titles = document.querySelectorAll(".mobileContent h2");
+
+  // Apply styles to each element
+  paragraphs.forEach((p) => {
+    p.style.color = textColor;
+    p.style.fontSize = textSize;
+  });
+
+  titles.forEach((t) => {
+    t.style.color = textColor;
+    t.style.fontSize = textSize;
+  });
+}
 
 //chapter modal
 
@@ -159,7 +219,6 @@ closeSettingsModal.addEventListener("click", () => {
   }, 500);
 });
 
-
 /** audio player */
 
 const playButton = document.getElementById("play");
@@ -174,7 +233,6 @@ let playState = "pause";
 playButton.innerHTML = '<i class="fa-solid fa-pause"></i>';
 
 function changeButton() {
-  
   const icon = playButton.querySelector("i");
   if (playState === "play" && icon.classList.contains("fa-play")) {
     icon.classList.remove("icon-slide-down", "icon-active");
@@ -192,7 +250,7 @@ function changeButton() {
       icon.classList.remove("icon-slide-down");
       icon.classList.add("icon-active");
       icon.style.opacity = "";
-    }, 300); 
+    }, 300);
   } else if (playState === "pause" && icon.classList.contains("fa-pause")) {
     icon.classList.remove("icon-slide-down", "icon-active");
     icon.classList.add("icon-slide-up");
@@ -210,12 +268,9 @@ function changeButton() {
       icon.classList.remove("icon-slide-down");
       icon.classList.add("icon-active");
       icon.style.opacity = "";
-      
-    }, 300); 
+    }, 300);
   }
 }
-
-
 
 textButton.addEventListener("click", () => {
   if (flipbookContainer.style.display !== "none") {
@@ -307,3 +362,33 @@ seekSlider.addEventListener("change", () => {
     requestAnimationFrame(whilePlaying);
   }
 });
+
+document
+  .getElementById("settingsForm")
+  .addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    autoplayBook = document.getElementById("autoplayBook").checked;
+    autonextPage = document.getElementById("autonextPage").checked;
+    textSize = document.getElementById("textSize").value;
+    textColor = document.getElementById("textColor").value;
+
+    const settings = {
+      autoplayBook,
+      autonextPage,
+      textSize,
+      textColor,
+    };
+
+    applyTextStyles();
+
+    localStorage.setItem("userSettings", JSON.stringify(settings));
+    // Show the notification
+    const notification = document.getElementById("settingsNotification");
+    notification.classList.add("show");
+
+    // Hide it after 3 seconds
+    setTimeout(() => {
+      notification.classList.remove("show");
+    }, 3000);
+  });

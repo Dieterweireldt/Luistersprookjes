@@ -78,21 +78,14 @@
 
 <!-- chapter Modal-->
 <div class="modal" id="settingsModal">
-  <div class="modal-content">
+  <div class="modal-content" id="settingsContent">
     <div class="modal-header">
-      <h2>Instellingen (werkt nog niet)</h2>
+      <h2>Instellingen</h2>
       <button class="sqButton" id="closeSettingsModal" >&times;</button>
     </div>
     <div class="modal-message">
       <form id="settingsForm" >
-             
-        <!-- Checkbox for autoplay audio -->
-        <label>
-          <input type="checkbox" id="autoplayAudio" name="autoplayAudio">
-          Automatisch audio afspelen
-        </label>
-        <br><br>
-      
+                   
         <!-- Checkbox for automatically starting book -->
         <label>
           <input type="checkbox" id="autoplayBook" name="autoplayBook">
@@ -127,6 +120,9 @@
         <button type="submit" class="rectButton" id="settingsSave">
           Opslaan
         </button>
+        <div id="settingsNotification" class="notification hidden">
+          Instellingen werden succesvol opgeslagen!
+        </div>
       </form>
       
     </div>

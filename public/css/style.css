@@ -449,6 +449,10 @@ button.next {
 
 }
 
+#settingsContent{
+  width: auto;
+}
+
 .modal-message {
   display: flex;
   flex-direction: column;
@@ -524,12 +528,36 @@ label{
   color: var(--glow);
   font-weight: bold;
   font-size: 1.5rem;
+  font-family: sans-serif;
 }
 
 #settingsSave {
   margin-top: 100px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
+.notification {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #4caf50; /* Green for success */
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 1000;
+}
+
+.notification.show {
+  opacity: 1;
+  visibility: visible;
+}
 
 #audio-player-container {
   display: flex;
@@ -785,9 +813,13 @@ input[type="range"]:active::-ms-thumb {
 
 
   .modal-content {
-    width: 100%;
-    height: 90%;
+    width: 90%;
+    height: 50%;
     z-index: 12;
+}
+
+#settingsContent{
+  width: 90%;
 }
 
 #playDiv button{
@@ -832,5 +864,16 @@ button.next {
   top: 90%;
   /*transform: translateY(-50%);*/
   z-index: 10;
+}
+
+
+
+#settingsModal h2 {
+  font-size: 1.5rem;
+}
+
+#settingsModal label {
+  font-size: 1rem;
+
 }
 }

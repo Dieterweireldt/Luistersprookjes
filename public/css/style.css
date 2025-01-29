@@ -133,6 +133,14 @@ a {
   flex-direction: column;
 }
 
+.buttonContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+}
+
 .boekContainer {
   width: 100%;
   margin: 0 auto;
@@ -178,7 +186,6 @@ a {
   filter: drop-shadow(-2px 2px 0px #14141e) drop-shadow(5px 5px 5px #4b92be);
 }
 
-
 .mobileContent {
   background-color: var(--neutral);
   padding: 20px;
@@ -215,7 +222,6 @@ a {
   display: block;
 }
 
-
 /* Styling for the buttons */
 .roundButton {
   background-color: var(--night);
@@ -243,7 +249,6 @@ a {
   box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.2);
 }
 
-
 .roundButton i {
   color: var(--neutral);
   z-index: 10;
@@ -263,6 +268,7 @@ a {
   align-items: center; /* Center aligns content vertically */
   width: 75%;
   margin-bottom: 5px;
+  font-size: 1rem;
 }
 
 /* Hover effect to enhance interactivity */
@@ -296,7 +302,6 @@ a {
   background-color: var(--glow);
   transform: scale(1.1);
   box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.2);
-
 }
 
 #searchInput {
@@ -337,8 +342,6 @@ a {
   position: relative;
 }
 
-
-
 #audio-settings button {
   margin: 0px 10px;
 }
@@ -363,8 +366,6 @@ a {
   justify-items: center; /* Centers items in the container horizontally */
   width: 100%;
 }
-
-
 
 #hoofdstukContainer {
   width: 50%; /* Control the width of the hoofdstuk container */
@@ -393,7 +394,7 @@ a {
 }
 
 .icon-slide-down {
-  opacity: 0; 
+  opacity: 0;
   transform: translateY(20px);
 }
 
@@ -428,7 +429,6 @@ button.next {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 20;
-  
 }
 
 .modal-content {
@@ -446,10 +446,9 @@ button.next {
   animation-timing-function: cubic-bezier(0.42, 0, 0.21, 0.99);
   z-index: 11;
   overflow: auto;
-
 }
 
-#settingsContent{
+#settingsContent {
   width: auto;
 }
 
@@ -480,14 +479,12 @@ button.next {
   position: relative;
 }
 
-
 #closeSettingsModal {
   width: 30px;
   height: 30px;
   margin-right: 0px;
   position: relative;
 }
-
 
 .modal.active .modal-content {
   opacity: 1;
@@ -523,8 +520,7 @@ button.next {
   }
 }
 
-
-label{
+label {
   color: var(--glow);
   font-weight: bold;
   font-size: 1.5rem;
@@ -573,41 +569,41 @@ label{
   height: 15vh;
   align-items: center;
   overflow: hidden;
-  }
-  
-  #playDiv { 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    justify-items: center;
-  }
+}
 
-  #seek-slider {
-    position: relative;
-    top: -5px;
-  }
-  #playDiv button{
-    margin-left: 20px;
-    margin-right: 20px;
-    width: 70px;
-    height: 70px;
-  }
+#playDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+}
 
-  #rangeDiv { 
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 75%;
-  }
-  #audio-settings { 
-    display: flex;
-    flex-direction: row;
-    justify-content: end;
-  }
+#seek-slider {
+  position: relative;
+  top: -5px;
+}
+#playDiv button {
+  margin-left: 20px;
+  margin-right: 20px;
+  width: 70px;
+  height: 70px;
+}
 
-  #audio-settings button {
-    margin-left: 25px;
-  }
+#rangeDiv {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 75%;
+}
+#audio-settings {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+}
+
+#audio-settings button {
+  margin-left: 25px;
+}
 
 /*styling for range*/
 input[type="range"] {
@@ -717,16 +713,14 @@ input[type="range"]:active::-ms-thumb {
   background: #007db5;
 }
 
-
 @media (max-width: 868px) {
-
   #audio-player-container {
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     grid-template-rows: repeat(2, 1fr);
     grid-column-gap: 0px;
     grid-row-gap: 0px;
-  
+
     --seek-before-width: 0%;
     --volume-before-width: 100%;
     --buffered-width: 0%;
@@ -738,46 +732,46 @@ input[type="range"]:active::-ms-thumb {
     justify-content: space-between;
     align-items: center;
     overflow: hidden;
-    }
-    
-    #playDiv { 
-      grid-area: 1 / 1 / 3 / 2; 
-      justify-content: center;
-      align-items: center;
-      justify-items: center;
-    }
-  
-    #seek-slider {
-      position: relative;
-      top: -5px;
-    }
-    #playDiv button{
-      margin-left: 20px;
-      margin-right: 20px;
-      width: 70px;
-      height: 70px;
-    }
-  
-    #rangeDiv { 
-      grid-area: 1 / 2 / 2 / 10; 
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      width: 100%;
-    }
-    #audio-settings { 
-      grid-area: 2 / 2 / 3 / 10; 
-      display: flex;
-      position: relative;
-      flex-direction: row;
-      justify-content:end;
-      width: 100%;
-      margin-top: -40px;
-    }
-  
-    #audio-settings button {
-      margin-left: 25px;
-    }
+  }
+
+  #playDiv {
+    grid-area: 1 / 1 / 3 / 2;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+  }
+
+  #seek-slider {
+    position: relative;
+    top: -5px;
+  }
+  #playDiv button {
+    margin-left: 20px;
+    margin-right: 20px;
+    width: 70px;
+    height: 70px;
+  }
+
+  #rangeDiv {
+    grid-area: 1 / 2 / 2 / 10;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+  }
+  #audio-settings {
+    grid-area: 2 / 2 / 3 / 10;
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    justify-content: end;
+    width: 100%;
+    margin-top: -40px;
+  }
+
+  #audio-settings button {
+    margin-left: 25px;
+  }
 
   .roundButton {
     width: 30px;
@@ -785,95 +779,97 @@ input[type="range"]:active::-ms-thumb {
     font-size: 18px;
   }
 
-
-
   .hero-text h1 {
-      position: relative;
-      top: 0;
-      text-align: center;
-      font-size: 2rem;
-      transform: translate(10%, -100%);
-    }
-  
-    #hoofdstukContainer {
-      width: 80%; 
-      text-align: left; 
-      display: grid;
-      grid-template-columns: 1fr; 
-    }
+    position: relative;
+    top: 0;
+    text-align: center;
+    font-size: 2rem;
+    transform: translate(10%, -100%);
+  }
 
-    #hoofdstukContainer div {
-      display: flex;
-      flex-direction: row;
-    }
+  #hoofdstukContainer {
+    width: 80%;
+    text-align: left;
+    display: grid;
+    grid-template-columns: 1fr;
+  }
 
-    .rectButton {
-      font-size: 1rem; /* Font size can be adjusted to fit the design */
-    }
-
+  #hoofdstukContainer div {
+    display: flex;
+    flex-direction: row;
+  }
 
   .modal-content {
     width: 90%;
     height: 50%;
     z-index: 12;
-}
+  }
 
-#settingsContent{
-  width: 90%;
-}
+  #settingsContent {
+    width: 90%;
+  }
 
-#playDiv button{
-  width: 60px;
-  height: 60px;
-}
-
-
+  #playDiv button {
+    width: 60px;
+    height: 60px;
+  }
 }
 
 @media (max-width: 440px) {
-.hero-text h1 {
-  position: relative;
-  top: -20px;
-  text-align: center;
-  font-size: 2.5em;
-}
+  .hero-text h1 {
+    position: relative;
+    top: -20px;
+    text-align: center;
+    font-size: 2.5em;
+  }
 
-.search {
-  top: 34vh;
-  right: 10vw;
-}
+  .rectButton {
+    font-size: 0.9rem;
+    padding: 8px 10px;
+  }
 
-#searchInput {
-  width: 100%;
-}
+  .search {
+    top: 34vh;
+    right: 10vw;
+  }
 
-#hoofdstukContainer {
-  width: 100%; 
-}
+  #searchInput {
+    width: 90%;
+  }
 
-#hoofdstukContainer .rectButton {
-  flex-grow: 1;
-}
+  #hoofdstukContainer {
+    width: 100%;
+  }
 
-.inhoudItem {
-  width: 100%;
-}
+  #hoofdstukContainer .rectButton {
+    flex-grow: 1;
+  }
 
-button.prev,
-button.next {
-  top: 90%;
-  /*transform: translateY(-50%);*/
-  z-index: 10;
-}
+  .inhoudItem {
+    width: 100%;
+  }
 
+  button.prev,
+  button.next {
+    top: 80%;
+    /*transform: translateY(-50%);*/
+    z-index: 10;
+  }
 
+  #settingsModal h2 {
+    font-size: 1.5rem;
+  }
 
-#settingsModal h2 {
-  font-size: 1.5rem;
-}
+  #settingsSave {
+    margin-top: 40px;
+    margin-bottom: 15px;
+  }
 
-#settingsModal label {
-  font-size: 1rem;
+  #settingsModal label {
+    font-size: 1rem;
+  }
 
-}
+  .modal-content {
+    height: 60%;
+  }
 }

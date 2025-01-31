@@ -181,6 +181,30 @@ function applyTextStyles() {
   });
 }
 
+function adjustButtonPosition() {
+  const audioControls = document.getElementById("audio-player-container");
+  const prev = document.querySelector(".prev");
+  const next = document.querySelector(".next");
+
+  // Compute the desired top position
+  const audioStartY = audioControls.offsetTop;
+  const buttonTop = audioStartY - prev.offsetHeight - 10; // Optional margin
+
+  if (window.innerWidth <= 440) {
+    // Apply positioning for mobile
+    prev.style.top = `${buttonTop}px`;
+    next.style.top = `${buttonTop}px`;
+  } else {
+    // Reset for desktop
+    next.style.top = "50%";
+    next.style.transform = "translateY(-50%)";
+    prev.style.top = "50%";
+    prev.style.transform = "translateY(-50%)";
+  }
+}
+
+window.addEventListener("resize", adjustButtonPosition);
+adjustButtonPosition();
 //chapter modal
 
 const chapterButton = document.getElementById("chapters");

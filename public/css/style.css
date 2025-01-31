@@ -209,7 +209,7 @@ a {
   color: var(--night);
   margin: 10px 0;
 }
-/* Media Queries */
+
 #desktop-carousel {
   display: flex; /* Show desktop carousel by default */
 }

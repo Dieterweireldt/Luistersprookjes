@@ -20,16 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const inhoudItems = document.querySelectorAll(".inhoudItem");
 
-  inhoudItems.forEach((button) => {
-    button.addEventListener("click", function () {
-      showPage(button.value);
-      chapterModal.classList.add("slideOut");
-      setTimeout(() => {
-        chapterModal.classList.remove("active", "slideOut");
-        chapterModal.style.display = "none";
-      }, 500);
-    });
-  });
+
 
   var boekValue = document.getElementById("boekJSON");
   var indexValue = document.getElementById("index");
@@ -50,13 +41,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function showPage(index) {
     if(index === 0){
-      console.log(autoplayBook);
       if(autoplayBook){
         console.log("cover overslaan");
         setTimeout(() => {
           currentIndex++;
           showPage(currentIndex);
-        }, 500);
+        }, 2000);
         
       }
     }
@@ -77,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   document.querySelector(".next").addEventListener("click", function () {
-    console.log(currentIndex);
+    //console.log(currentIndex);
     if (currentIndex < pages) {
       currentIndex++;
       showPage(currentIndex);
@@ -157,6 +147,17 @@ document.addEventListener("DOMContentLoaded", function () {
         showPage(currentIndex);
       }
     }
+  });
+
+  inhoudItems.forEach((button) => {
+    button.addEventListener("click", function () {
+      showPage(button.value);
+      chapterModal.classList.add("slideOut");
+      setTimeout(() => {
+        chapterModal.classList.remove("active", "slideOut");
+        chapterModal.style.display = "none";
+      }, 500);
+    });
   });
 
   applyTextStyles();

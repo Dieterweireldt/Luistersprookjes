@@ -8,9 +8,7 @@ let textSize = "16px";
 let textColor = "#000000";
 
 // Load settings from localStorage on page load
-window.addEventListener("load", function () {
-
-});
+window.addEventListener("load", function () {});
 
 document.addEventListener("DOMContentLoaded", function () {
   const flipbook = document.getElementById("flipbook");
@@ -19,8 +17,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const audio = document.querySelector("audio");
 
   const inhoudItems = document.querySelectorAll(".inhoudItem");
-
-
 
   var boekValue = document.getElementById("boekJSON");
   var indexValue = document.getElementById("index");
@@ -40,21 +36,19 @@ document.addEventListener("DOMContentLoaded", function () {
   calcPages();
 
   function showPage(index) {
-    if(index === 0){
-      if(autoplayBook){
+    if (index === 0) {
+      if (autoplayBook) {
         console.log("cover overslaan");
         setTimeout(() => {
-          currentIndex++;
-          showPage(currentIndex);
-        }, 2000);
-        
+          playNext();
+        }, 500);
       }
     }
     const offset = -index * 100;
     flipbook.style.transform = `translateX(${offset}%)`;
     flipbookMobile.style.transform = `translateX(${offset}%)`;
     currentIndex = index;
-    
+
     playAudio();
     changeButton();
   }
@@ -68,10 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   document.querySelector(".next").addEventListener("click", function () {
     //console.log(currentIndex);
-    if (currentIndex < pages) {
-      currentIndex++;
-      showPage(currentIndex);
-    }
+ playNext();
   });
 
   document.querySelector(".close").addEventListener("click", function () {
@@ -89,17 +80,28 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
+  function playNext(){
+    if (currentIndex < pages) {
+      currentIndex++;
+      showPage(currentIndex);
+    }
+  }
+
   function playAudio() {
     audio.pause();
     playState = "pause";
     if (currentIndex > 0) {
-      
-        playState = "play";
-        audio.src = audioFiles[currentIndex];
-        console.log(audioFiles[currentIndex]);
-        audio.play();
-        requestAnimationFrame(whilePlaying);
-      
+      playState = "play";
+      audio.src = audioFiles[currentIndex];
+      audio.addEventListener("loadedmetadata", () => {
+        console.log(audio.duration);
+        if (audio.duration < 3.5) {
+          console.log("empty page");
+        }
+      });
+      console.log(audioFiles[currentIndex]);
+      audio.play();
+      requestAnimationFrame(whilePlaying);
     }
   }
 
@@ -139,12 +141,11 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   audio.addEventListener("ended", function () {
-    console.log("Audio finished playing!");
-    // Proceed to the next page or perform any other action
+    //console.log("Audio finished playing!");
+    // Proceed to the next page
     if (autonextPage) {
       if (currentIndex < pages) {
-        currentIndex++;
-        showPage(currentIndex);
+        playNext();
       }
     }
   });

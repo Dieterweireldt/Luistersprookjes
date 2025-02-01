@@ -374,6 +374,12 @@ a {
   grid-template-columns: 1fr; /* Ensure the chapters stack in one column */
 }
 
+.hoofdstukItem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .close i,
 .search i {
   color: var(--neutral);
@@ -570,6 +576,7 @@ label {
   align-items: center;
   overflow: hidden;
 }
+
 
 #playDiv {
   display: flex;
@@ -783,7 +790,7 @@ input[type="range"]:active::-ms-thumb {
     position: relative;
     top: 0;
     text-align: center;
-    font-size: 2rem;
+    font-size: 6rem;
     transform: translate(10%, -100%);
   }
 
@@ -793,6 +800,8 @@ input[type="range"]:active::-ms-thumb {
     display: grid;
     grid-template-columns: 1fr;
   }
+
+
 
   #hoofdstukContainer div {
     display: flex;

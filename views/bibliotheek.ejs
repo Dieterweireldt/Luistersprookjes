@@ -21,7 +21,7 @@
   <input type="text" id="searchInput" placeholder="zoek.."  autocomplete="off"/>
   <div id="hoofdstukContainer">
     <% hoofdstukken.forEach(function(hoofdstuk){ %>
-    <div>
+    <div class="hoofdstukItem">
       <a class="sqButton" href="/boek?boekName=<%=hoofdstuk.boekNaam %>&index=0" ><%=hoofdstuk.boekNr %></a>
       <a class="hoofdstuk rectButton"
         href="/boek?boekName=<%=hoofdstuk.boekNaam %>&index=<%=hoofdstuk.pagNr %> "
